@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+const lang = 'fr';
+---
+
+<Layout
+  title="Politique de confidentialité — AJAVON Médiation"
+  description="Politique de confidentialité et protection des données personnelles du site AJAVON Médiation, conformément au RGPD."
+  lang={lang}
+>
+  <section class="legal" aria-label="Politique de confidentialité">
+    <div class="legal-inner">
+      <a href="/" class="legal-back">← Retour à l'accueil</a>
+      <h1>Politique de confidentialité</h1>
+      <p class="legal-updated">Dernière mise à jour : juin 2026</p>
+
+      <p>
+        La protection de vos données personnelles est une priorité. La présente politique explique
+        quelles données sont collectées via ce site, dans quel but, pendant combien de temps elles sont
+        conservées et quels sont vos droits, conformément au Règlement général sur la protection des
+        données (RGPD) et à la loi « Informatique et Libertés ».
+      </p>
+
+      <h2>1. Responsable du traitement</h2>
+      <p>
+        Le responsable du traitement est M. Emile Ajavon, entrepreneur individuel (micro-entreprise),
+        81 rue René Messeaux, 77260 La Ferté-sous-Jouarre, France. Pour toute question relative à vos
+        données : <a href="mailto:contact@ajavon-mediation.com">contact@ajavon-mediation.com</a>.
+      </p>
+
+      <h2>2. Données collectées</h2>
+      <p>
+        Les seules données personnelles collectées sur ce site le sont via le formulaire de contact,
+        lorsque vous choisissez de le remplir : votre prénom, votre nom, votre adresse email, votre
+        numéro de téléphone (facultatif), le type de situation concernée, les pays concernés (facultatif)
+        et le contenu de votre message. Le site ne nécessite aucune création de compte et ne collecte
+        aucune donnée à votre insu.
+      </p>
+
+      <h2>3. Finalité du traitement</h2>
+      <p>
+        Ces informations sont utilisées exclusivement pour répondre à votre demande, évaluer si un
+        accompagnement en médiation est adapté à votre situation et, le cas échéant, organiser un premier
+        échange. Elles ne font l'objet d'aucune prospection commerciale.
+      </p>
+
+      <h2>4. Base légale</h2>
+      <p>
+        Le traitement repose sur votre consentement, matérialisé par l'envoi volontaire du formulaire
+        (article 6.1.a du RGPD), ainsi que sur l'exécution de mesures précontractuelles prises à votre
+        demande (article 6.1.b du RGPD).
+      </p>
+
+      <h2>5. Destinataires et sous-traitants</h2>
+      <p>
+        Vos données sont destinées au seul cabinet et ne sont ni vendues ni cédées à des tiers à des fins
+        commerciales. Pour des raisons techniques, elles transitent par les prestataires suivants :
+      </p>
+      <p>
+        <strong>Formspree</strong> (Formspree, Inc., États-Unis) assure l'acheminement des messages du
+        formulaire vers la messagerie du cabinet. <strong>Cloudflare, Inc.</strong> (États-Unis) assure
+        l'hébergement et la diffusion du site. Ces prestataires étant situés hors de l'Union européenne,
+        les transferts de données sont encadrés par des garanties appropriées (clauses contractuelles
+        types de la Commission européenne et, le cas échéant, cadre de protection des données
+        UE–États-Unis).
+      </p>
+
+      <h2>6. Polices d'écriture</h2>
+      <p>
+        Les polices d'écriture utilisées par le site sont hébergées localement, avec le reste du site.
+        Aucune requête n'est adressée à un service tiers (tel que Google Fonts) pour leur affichage :
+        votre adresse IP n'est donc transmise à aucun fournisseur de polices externe.
+      </p>
+
+      <h2>7. Cookies</h2>
+      <p>
+        Ce site ne dépose aucun cookie de mesure d'audience, de profilage ou de publicité. Seuls peuvent
+        être utilisés des cookies techniques strictement nécessaires à la sécurité et au bon
+        fonctionnement du site, notamment ceux déposés par l'hébergeur Cloudflare. Ces cookies ne
+        requièrent pas votre consentement préalable.
+      </p>
+
+      <h2>8. Durée de conservation</h2>
+      <p>
+        Les données issues du formulaire sont conservées le temps nécessaire au traitement de votre
+        demande, puis archivées ou supprimées au plus tard trois ans après le dernier contact, sauf
+        obligation légale imposant une conservation plus longue.
+      </p>
+
+      <h2>9. Vos droits</h2>
+      <p>
+        Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et
+        de portabilité de vos données. Vous pouvez les exercer à tout moment en écrivant à
+        <a href="mailto:contact@ajavon-mediation.com">contact@ajavon-mediation.com</a>. Si vous estimez,
+        après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez introduire une
+        réclamation auprès de la Commission nationale de l'informatique et des libertés (CNIL),
+        <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>.
+      </p>
+
+      <h2>10. Confidentialité de la médiation</h2>
+      <p>
+        Indépendamment de la présente politique, les échanges intervenant dans le cadre d'un processus de
+        médiation sont couverts par le principe de confidentialité propre à la médiation : ce qui est dit
+        ou communiqué pendant la médiation ne peut être divulgué ni utilisé en dehors de celle-ci, sauf
+        accord des parties ou exceptions prévues par la loi.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal { background: var(--cream); padding: 9rem 1.5rem 5rem; }
+  .legal-inner { max-width: 760px; margin: 0 auto; }
+  .legal-back {
+    display: inline-block; margin-bottom: 2.5rem; font-family: var(--font-sans);
+    font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--terra); text-decoration: none; transition: color var(--transition);
+  }
+  .legal-back:hover { color: var(--gold); }
+  .legal h1 {
+    font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.2rem, 5vw, 3rem);
+    color: var(--deep); line-height: 1.1; margin-bottom: 0.5rem;
+  }
+  .legal-updated {
+    font-family: var(--font-sans); font-size: 0.82rem; color: var(--text-light);
+    margin-bottom: 3rem;
+  }
+  .legal h2 {
+    font-family: var(--font-serif); font-weight: 400; font-size: 1.5rem;
+    color: var(--terra); margin: 2.8rem 0 0.9rem;
+  }
+  .legal p {
+    font-family: var(--font-sans); font-weight: 300; font-size: 1rem;
+    line-height: 1.9; color: var(--text); margin-bottom: 1rem;
+  }
+  .legal a { color: var(--terra); text-decoration: underline; text-underline-offset: 3px; }
+  .legal a:hover { color: var(--gold); }
+  .legal strong { font-weight: 500; color: var(--deep); }
+</style>

@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+const lang = 'fr';
+---
+
+<Layout
+  title="Mentions légales — AJAVON Médiation"
+  description="Mentions légales du site AJAVON Médiation, cabinet de médiation familiale et internationale à La Ferté-sous-Jouarre."
+  lang={lang}
+>
+  <section class="legal" aria-label="Mentions légales">
+    <div class="legal-inner">
+      <a href="/" class="legal-back">← Retour à l'accueil</a>
+      <h1>Mentions légales</h1>
+      <p class="legal-updated">Dernière mise à jour : juin 2026</p>
+
+      <h2>Éditeur du site</h2>
+      <p>
+        Le présent site, accessible à l'adresse <strong>ajavon-mediation.com</strong>, est édité par
+        M. Emile Ajavon, entrepreneur individuel exerçant son activité de médiation sous le régime
+        de la micro-entreprise.
+      </p>
+      <dl class="legal-identity">
+        <div><dt>Adresse</dt><dd>81, rue René Messeaux, 77260 La Ferté-sous-Jouarre, France</dd></div>
+        <div><dt>Téléphone</dt><dd><a href="tel:+33766636460">+33 (0)7 66 63 64 60</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:contact@ajavon-mediation.com">contact@ajavon-mediation.com</a></dd></div>
+        <div><dt>SIREN</dt><dd>512 190 893</dd></div>
+        <div><dt>SIRET</dt><dd>512 190 893 00028</dd></div>
+        <div><dt>TVA</dt><dd>TVA non applicable, article 293 B du Code général des impôts (franchise en base de TVA)</dd></div>
+      </dl>
+
+      <h2>Directeur de la publication</h2>
+      <p>M. Emile Ajavon, en qualité d'éditeur du site.</p>
+
+      <h2>Hébergeur</h2>
+      <p>
+        Le site est hébergé par <strong>Cloudflare, Inc.</strong>, 101 Townsend Street,
+        San Francisco, CA 94107, États-Unis. Téléphone : +1 (650) 319-8930 —
+        Site : <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a>.
+      </p>
+
+      <h2>Activité de médiation</h2>
+      <p>
+        M. Emile Ajavon exerce une activité de médiation familiale, familiale internationale et de
+        résolution amiable des différends, dans le respect des dispositions légales et réglementaires
+        applicables, ainsi que des principes d'impartialité, de neutralité et de confidentialité propres
+        à la médiation. Le processus de médiation est régi notamment par les articles 21 et suivants de la
+        loi n° 95-125 du 8 février 1995 et par les textes pris pour son application.
+      </p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des éléments composant ce site (textes, contenus rédactionnels, photographies,
+        identité visuelle, logo, mise en page et structure) est protégé par le droit de la propriété
+        intellectuelle. Toute reproduction, représentation, adaptation ou exploitation, totale ou
+        partielle, sans l'autorisation écrite préalable de l'éditeur, est interdite et susceptible de
+        constituer une contrefaçon. La couverture et le titre de l'ouvrage présenté demeurent la propriété
+        de leurs ayants droit respectifs, dont l'éditeur Publibook.
+      </p>
+
+      <h2>Responsabilité</h2>
+      <p>
+        L'éditeur s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce
+        site, sans toutefois pouvoir en garantir l'exhaustivité ou l'absence d'erreur. Les informations
+        présentées ont une vocation générale d'information et ne constituent ni un conseil juridique
+        individualisé, ni un engagement contractuel. Le site peut contenir des liens vers des sites
+        tiers : l'éditeur n'exerce aucun contrôle sur ces contenus et décline toute responsabilité à
+        leur égard.
+      </p>
+
+      <h2>Données personnelles</h2>
+      <p>
+        Le traitement des données personnelles collectées via le formulaire de contact est détaillé dans
+        notre <a href="/politique-de-confidentialite">politique de confidentialité</a>, conformément au
+        Règlement général sur la protection des données (RGPD) et à la loi « Informatique et Libertés ».
+      </p>
+
+      <h2>Droit applicable</h2>
+      <p>
+        Les présentes mentions légales sont régies par le droit français. Tout litige relatif à
+        l'utilisation du site relève de la compétence des juridictions françaises.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal { background: var(--cream); padding: 9rem 1.5rem 5rem; }
+  .legal-inner { max-width: 760px; margin: 0 auto; }
+  .legal-back {
+    display: inline-block; margin-bottom: 2.5rem; font-family: var(--font-sans);
+    font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--terra); text-decoration: none; transition: color var(--transition);
+  }
+  .legal-back:hover { color: var(--gold); }
+  .legal h1 {
+    font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.2rem, 5vw, 3rem);
+    color: var(--deep); line-height: 1.1; margin-bottom: 0.5rem;
+  }
+  .legal-updated {
+    font-family: var(--font-sans); font-size: 0.82rem; color: var(--text-light);
+    margin-bottom: 3rem;
+  }
+  .legal h2 {
+    font-family: var(--font-serif); font-weight: 400; font-size: 1.5rem;
+    color: var(--terra); margin: 2.8rem 0 0.9rem;
+  }
+  .legal p {
+    font-family: var(--font-sans); font-weight: 300; font-size: 1rem;
+    line-height: 1.9; color: var(--text); margin-bottom: 1rem;
+  }
+  .legal a { color: var(--terra); text-decoration: underline; text-underline-offset: 3px; }
+  .legal a:hover { color: var(--gold); }
+  .legal strong { font-weight: 500; color: var(--deep); }
+  .legal-identity { margin: 1.2rem 0 0; border-left: 2px solid var(--gold); padding-left: 1.5rem; }
+  .legal-identity > div { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; padding: 0.45rem 0; }
+  .legal-identity dt {
+    font-family: var(--font-sans); font-weight: 500; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-light); margin: 0;
+  }
+  .legal-identity dd {
+    font-family: var(--font-sans); font-weight: 300; font-size: 0.95rem;
+    color: var(--text); margin: 0; line-height: 1.6;
+  }
+  @media (max-width: 560px) {
+    .legal-identity > div { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>

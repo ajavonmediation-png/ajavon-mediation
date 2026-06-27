@@ -51,10 +51,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Polices auto-hébergées (déclarées dans global.css, aucun appel externe) -->
+  <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Structured Data: LocalBusiness -->
   <script type="application/ld+json">
