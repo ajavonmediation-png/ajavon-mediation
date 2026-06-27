@@ -8,7 +8,7 @@ const t = useTranslations(lang);
 
 <Layout
   title="AJAVON Médiation — Médiation Familiale & Internationale | La Ferté-sous-Jouarre"
-  description="Cabinet spécialisé en médiation familiale nationale et internationale. Enlèvement parental, droits de visite, divorce transfrontalier. Première consultation gratuite. Me Ajavon, La Ferté-sous-Jouarre."
+  description="Cabinet spécialisé en médiation familiale nationale et internationale. Enlèvement parental, droits de visite, divorce transfrontalier. Première consultation gratuite. M. Emile Ajavon, La Ferté-sous-Jouarre."
   lang={lang}
 >
 
@@ -16,12 +16,7 @@ const t = useTranslations(lang);
 <section class="hero" aria-label="Introduction">
   <div class="hero-left fade-in">
     <div class="hero-eyebrow">{t.hero.eyebrow}</div>
-    <h1>
-      {t.hero.title1}<br>
-      {t.hero.title2}<br>
-      <em>{t.hero.title3}</em><br>
-      {t.hero.title4}
-    </h1>
+    <h1 set:html={t.hero.title}></h1>
     <p class="hero-desc">{t.hero.desc}</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">{t.hero.cta_primary}</a>
@@ -66,7 +61,7 @@ const t = useTranslations(lang);
 <section class="about" id="about" aria-label={t.about.label}>
   <div class="about-left fade-in">
     <div class="section-label">{t.about.label}</div>
-    <h2>{t.about.title1}<br><em>{t.about.title2}</em></h2>
+    <h2 set:html={t.about.title}></h2>
     <p class="about-text">{t.about.text1}</p>
     <p class="about-text">{t.about.text2}</p>
     <div class="values-list">
@@ -95,9 +90,10 @@ const t = useTranslations(lang);
   </div>
   <div class="about-right fade-in">
     <div class="portrait-frame">
-      <div class="portrait-placeholder" role="img" aria-label="Portrait de Me Ajavon">
+      <img src="/photo-ajavon.jpg" alt="M. Emile Ajavon, médiateur familial international, au Palais de Justice" class="portrait-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="portrait-placeholder" role="img" aria-label={`Portrait de ${t.about.credential_name}`} style="display:none;">
         <span class="portrait-icon" aria-hidden="true">👤</span>
-        <span class="portrait-caption">Me Ajavon</span>
+        <span class="portrait-caption">{t.about.credential_name}</span>
       </div>
       <div class="credential">
         <div class="credential-title">{t.about.credential_title}</div>
@@ -111,7 +107,7 @@ const t = useTranslations(lang);
 <section class="services" id="services" aria-label={t.services.label}>
   <div class="services-header">
     <div class="section-label centered">{t.services.label}</div>
-    <h2>{t.services.title1}<br><em>{t.services.title2}</em></h2>
+    <h2 set:html={t.services.title}></h2>
   </div>
   <div class="services-grid" role="list">
     {[
@@ -132,10 +128,36 @@ const t = useTranslations(lang);
   </div>
 </section>
 
+<!-- ══ AUTRES DOMAINES ══ -->
+<section class="other-mediations" id="autres-domaines" aria-label={t.other.label}>
+  <div class="other-header fade-in">
+    <div class="section-label centered">{t.other.label}</div>
+    <h2 set:html={t.other.title}></h2>
+    <p class="other-intro">{t.other.intro}</p>
+  </div>
+  <div class="other-grid" role="list">
+    {[
+      { icon: '🛒', title: t.other.card1_title, desc: t.other.card1_desc, li: [t.other.card1_li1, t.other.card1_li2, t.other.card1_li3] },
+      { icon: '🤝', title: t.other.card2_title, desc: t.other.card2_desc, li: [t.other.card2_li1, t.other.card2_li2, t.other.card2_li3] },
+      { icon: '⚖️', title: t.other.card3_title, desc: t.other.card3_desc, li: [t.other.card3_li1, t.other.card3_li2, t.other.card3_li3] },
+      { icon: '🏛️', title: t.other.card4_title, desc: t.other.card4_desc, li: [t.other.card4_li1, t.other.card4_li2, t.other.card4_li3] },
+    ].map(c => (
+      <article class="other-card fade-in" role="listitem">
+        <div class="other-icon" aria-hidden="true">{c.icon}</div>
+        <h3 class="other-title">{c.title}</h3>
+        <p class="other-desc">{c.desc}</p>
+        <ul class="other-list">
+          {c.li.map(item => <li>{item}</li>)}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>
+
 <!-- ══ PROCESS ══ -->
 <section class="process" id="processus" aria-label={t.process.label}>
   <div class="section-label">{t.process.label}</div>
-  <h2>{t.process.title1}<br><em>{t.process.title2}</em></h2>
+  <h2 set:html={t.process.title}></h2>
   <ol class="process-steps">
     {[
       { num: '1', title: t.process.step1_title, desc: t.process.step1_desc },
@@ -156,7 +178,7 @@ const t = useTranslations(lang);
 <section class="international" id="international" aria-label={t.international.label}>
   <div class="intl-content fade-in">
     <div class="section-label">{t.international.label}</div>
-    <h2>{t.international.title1}<br><em>{t.international.title2}</em></h2>
+    <h2 set:html={t.international.title}></h2>
     <p class="intl-text">{t.international.text1}</p>
     <p class="intl-text">{t.international.text2}</p>
     <div class="countries-grid" role="list" aria-label="Pays couverts">
@@ -188,22 +210,26 @@ const t = useTranslations(lang);
 <section class="livre" id="livre" aria-label={t.book.label}>
   <div class="livre-inner">
     <div class="book-wrapper fade-in">
-      <div class="book-placeholder" role="img" aria-label="Couverture du livre">
+      <a href="https://librairie.publibook.com/economie-droit/15580-un-autre-regard-sur-linteret-superieur-de-lenfant-9782342374995.html" target="_blank" rel="noopener noreferrer" aria-label="Commander le livre sur Publibook">
+        <img src="/livre-couverture.jpg" alt="Couverture du livre Un autre regard sur l'intérêt supérieur de l'enfant, par Amah-Émile Ajavon" class="book-img" onerror="this.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';" />
+      </a>
+      <div class="book-placeholder" role="img" aria-label="Couverture du livre" style="display:none;">
         <span aria-hidden="true">📚</span>
         <span class="book-placeholder-text">Un autre regard<br>sur l'intérêt<br>supérieur de l'enfant</span>
       </div>
       <div class="book-meta">
-        <div class="book-meta-item">📖 Publibook Éditions</div>
-        <div class="book-meta-item">📄 ISBN : 978-2-342-37499-5</div>
-        <div class="book-meta-item">📅 2023</div>
+        <div class="book-meta-item">📅 Septembre 2024</div>
+        <div class="book-meta-item">📄 240 pages</div>
+        <div class="book-meta-item">🏷️ ISBN : 9782342374995</div>
+        <div class="book-meta-item">🖨️ Format papier & ebook</div>
       </div>
     </div>
     <div class="livre-content fade-in">
       <div class="section-label">{t.book.label}</div>
-      <h2>{t.book.title1}<br><em>{t.book.title2}</em></h2>
+      <h2 set:html={t.book.title}></h2>
       <p class="livre-accroche">{t.book.accroche}</p>
       <div class="livre-keywords" aria-label="Mots-clés">
-        {[t.book.kw1, t.book.kw2, t.book.kw3, t.book.kw4].map(kw => (
+        {[t.book.kw1, t.book.kw2, t.book.kw3, t.book.kw4, t.book.kw5, t.book.kw6].map(kw => (
           <span class="keyword">{kw}</span>
         ))}
       </div>
@@ -230,7 +256,7 @@ const t = useTranslations(lang);
 <!-- ══ TÉMOIGNAGES ══ -->
 <section class="testimonials" aria-label={t.testimonials.label}>
   <div class="section-label centered">{t.testimonials.label}</div>
-  <h2>{t.testimonials.title1} <em>{t.testimonials.title2}</em></h2>
+  <h2 set:html={t.testimonials.title}></h2>
   <div class="testimonials-grid">
     {[
       { text: t.testimonials.t1_text, author: t.testimonials.t1_author, ctx: t.testimonials.t1_context },
@@ -252,7 +278,7 @@ const t = useTranslations(lang);
 <section class="contact" id="contact" aria-label={t.contact.label}>
   <div class="contact-left fade-in">
     <div class="section-label">{t.contact.label}</div>
-    <h2>{t.contact.title1}<br><em>{t.contact.title2}</em></h2>
+    <h2 set:html={t.contact.title}></h2>
     <p>{t.contact.intro}</p>
     <address class="contact-info">
       <div class="contact-item">
@@ -275,8 +301,8 @@ const t = useTranslations(lang);
   </div>
 
   <div class="contact-form fade-in">
-    <!-- REMPLACER YOUR_FORM_ID par votre ID Formspree -->
-    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+    <!-- REMPLACER mdargqov par votre ID Formspree -->
+    <form id="contact-form" action="https://formspree.io/f/mdargqov" method="POST" novalidate>
       <div class="form-row">
         <div class="form-group">
           <label for="firstname">{t.contact.f_firstname}</label>
@@ -430,6 +456,7 @@ const t = useTranslations(lang);
   content: ''; position: absolute; top: -15px; left: -15px; right: 15px; bottom: 15px;
   border: 1px solid rgba(196,163,90,0.4); pointer-events: none;
 }
+.portrait-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center; display: block; }
 .portrait-placeholder {
   width: 100%; aspect-ratio: 3/4;
   background: linear-gradient(135deg, var(--sand) 0%, #d4c4a0 100%);
@@ -473,11 +500,29 @@ const t = useTranslations(lang);
   color: var(--gold); border-top: 1px solid var(--mist); padding-top: 1rem; width: 100%;
 }
 
+/* AUTRES DOMAINES */
+.other-mediations { background: var(--deep); color: var(--cream); }
+.other-header { text-align: center; margin-bottom: 1rem; }
+.other-mediations .section-label { justify-content: center; color: var(--gold); }
+.other-mediations .section-label::before { display: none; }
+.other-mediations h2 { color: var(--cream); }
+.other-mediations h2 :global(em) { color: var(--gold); font-style: italic; }
+.other-intro { max-width: 620px; margin: 1.5rem auto 0; font-size: 1rem; line-height: 1.8; color: #a09282; font-weight: 300; }
+.other-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem; }
+.other-card { background: rgba(255,255,255,0.05); padding: 2.5rem; border: 1px solid rgba(196,163,90,0.2); transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease; }
+.other-card:hover { background: rgba(255,255,255,0.08); border-color: var(--gold); transform: translateY(-4px); }
+.other-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+.other-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 400; color: var(--cream); margin-bottom: 1rem; line-height: 1.3; }
+.other-desc { font-size: 0.88rem; line-height: 1.8; color: #a09282; font-weight: 300; margin-bottom: 1.5rem; }
+.other-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.other-list li { font-size: 0.82rem; color: var(--gold); padding-left: 1rem; position: relative; }
+.other-list li::before { content: '◆'; position: absolute; left: 0; font-size: 0.5rem; top: 0.4rem; }
+
 /* PROCESS */
 .process { background: var(--deep); color: var(--cream); }
 .process .section-label { color: var(--gold); }
 .process h2 { color: var(--cream); margin-bottom: 4rem; }
-.process h2 em { color: var(--gold); }
+.process h2 :global(em) { color: var(--gold); font-style: italic; }
 .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; list-style: none; }
 .step { position: relative; }
 .step::after {
@@ -511,6 +556,8 @@ const t = useTranslations(lang);
 .livre { background: var(--white); }
 .livre-inner { display: grid; grid-template-columns: 320px 1fr; gap: 6rem; align-items: start; }
 .book-wrapper { position: relative; box-shadow: -8px 8px 30px rgba(44,36,22,0.25); }
+.book-img { width: 100%; display: block; border-radius: var(--radius); transition: transform 0.4s ease; }
+.book-wrapper a:hover .book-img { transform: translateY(-3px); }
 .book-placeholder {
   width: 100%; aspect-ratio: 2/3;
   background: linear-gradient(135deg, var(--sand), var(--terra));
@@ -555,7 +602,7 @@ const t = useTranslations(lang);
 .contact-left .section-label { color: rgba(255,255,255,0.6); }
 .contact-left .section-label::before { background: rgba(255,255,255,0.4); }
 .contact-left h2 { color: var(--white); margin-bottom: 1.5rem; }
-.contact-left h2 em { color: rgba(255,255,255,0.85); }
+.contact-left h2 :global(em) { color: rgba(255,255,255,0.85); font-style: italic; }
 .contact-left > p { color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
 .contact-info { display: flex; flex-direction: column; gap: 1.2rem; font-style: normal; }
 .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
@@ -621,6 +668,7 @@ const t = useTranslations(lang);
 @media (max-width: 640px) {
   .hero-left { padding: 4rem 1.5rem 2rem; }
   .services-grid  { grid-template-columns: 1fr; }
+  .other-grid     { grid-template-columns: 1fr; }
   .process-steps  { grid-template-columns: 1fr; }
   .step::after    { display: none; }
   .form-row       { grid-template-columns: 1fr; }
