@@ -190,6 +190,6 @@ export const en = {
     c4: "Contact",
     legal: "Legal notice",
     privacy: "Privacy policy",
-    rights: "© 2025 AJAVON Mediation & Advice. All rights reserved.",
+    rights: "© 2026 AJAVON Mediation & Advice. All rights reserved.",
   },
 };

@@ -4,7 +4,7 @@ export default defineConfig({
   site: 'https://ajavon-mediation.com',
   i18n: {
     defaultLocale: 'fr',
-    locales: ['fr', 'en', 'mina'],
+    locales: ['fr', 'en'],
     routing: {
       prefixDefaultLocale: false
     }

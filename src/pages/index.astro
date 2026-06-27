@@ -308,6 +308,7 @@ const t = useTranslations(lang);
           data-sending={t.contact.f_sending}
           data-err-required={t.contact.f_err_required}
           data-err-email={t.contact.f_err_email}
+          data-err-phone={t.contact.f_err_phone}
           data-err-consent={t.contact.f_err_consent}>
       <p class="form-note">{t.contact.f_required_note}</p>
 
@@ -332,7 +333,9 @@ const t = useTranslations(lang);
 
       <div class="form-group">
         <label for="phone">{t.contact.f_phone}</label>
-        <input type="tel" id="phone" name="phone" placeholder="+33 6 00 00 00 00" autocomplete="tel" />
+        <input type="tel" id="phone" autocomplete="tel" aria-describedby="phone-error" />
+        <input type="hidden" name="phone" id="phone-full" />
+        <span class="field-error" id="phone-error" role="alert"></span>
       </div>
 
       <div class="form-group">
@@ -350,7 +353,63 @@ const t = useTranslations(lang);
 
       <div class="form-group">
         <label for="countries">{t.contact.f_countries}</label>
-        <input type="text" id="countries" name="countries" placeholder={t.contact.f_countries_placeholder} />
+        <select id="countries" name="countries">
+          <option value="">— Sélectionnez (facultatif) —</option>
+          <option value="France" data-iso="fr">France</option>
+          <option value="Afrique du Sud" data-iso="za">Afrique du Sud</option>
+          <option value="Algérie" data-iso="dz">Algérie</option>
+          <option value="Allemagne" data-iso="de">Allemagne</option>
+          <option value="Arabie saoudite" data-iso="sa">Arabie saoudite</option>
+          <option value="Argentine" data-iso="ar">Argentine</option>
+          <option value="Australie" data-iso="au">Australie</option>
+          <option value="Autriche" data-iso="at">Autriche</option>
+          <option value="Belgique" data-iso="be">Belgique</option>
+          <option value="Bénin" data-iso="bj">Bénin</option>
+          <option value="Brésil" data-iso="br">Brésil</option>
+          <option value="Burkina Faso" data-iso="bf">Burkina Faso</option>
+          <option value="Cameroun" data-iso="cm">Cameroun</option>
+          <option value="Canada" data-iso="ca">Canada</option>
+          <option value="Chine" data-iso="cn">Chine</option>
+          <option value="Congo-Brazzaville" data-iso="cg">Congo-Brazzaville</option>
+          <option value="Côte d'Ivoire" data-iso="ci">Côte d'Ivoire</option>
+          <option value="Danemark" data-iso="dk">Danemark</option>
+          <option value="Égypte" data-iso="eg">Égypte</option>
+          <option value="Émirats arabes unis" data-iso="ae">Émirats arabes unis</option>
+          <option value="Espagne" data-iso="es">Espagne</option>
+          <option value="États-Unis" data-iso="us">États-Unis</option>
+          <option value="Gabon" data-iso="ga">Gabon</option>
+          <option value="Grèce" data-iso="gr">Grèce</option>
+          <option value="Guinée" data-iso="gn">Guinée</option>
+          <option value="Inde" data-iso="in">Inde</option>
+          <option value="Irlande" data-iso="ie">Irlande</option>
+          <option value="Israël" data-iso="il">Israël</option>
+          <option value="Italie" data-iso="it">Italie</option>
+          <option value="Japon" data-iso="jp">Japon</option>
+          <option value="Liban" data-iso="lb">Liban</option>
+          <option value="Luxembourg" data-iso="lu">Luxembourg</option>
+          <option value="Madagascar" data-iso="mg">Madagascar</option>
+          <option value="Mali" data-iso="ml">Mali</option>
+          <option value="Maroc" data-iso="ma">Maroc</option>
+          <option value="Maurice" data-iso="mu">Maurice</option>
+          <option value="Mexique" data-iso="mx">Mexique</option>
+          <option value="Niger" data-iso="ne">Niger</option>
+          <option value="Norvège" data-iso="no">Norvège</option>
+          <option value="Pays-Bas" data-iso="nl">Pays-Bas</option>
+          <option value="Pologne" data-iso="pl">Pologne</option>
+          <option value="Portugal" data-iso="pt">Portugal</option>
+          <option value="Qatar" data-iso="qa">Qatar</option>
+          <option value="RD Congo" data-iso="cd">RD Congo</option>
+          <option value="Roumanie" data-iso="ro">Roumanie</option>
+          <option value="Royaume-Uni" data-iso="gb">Royaume-Uni</option>
+          <option value="Russie" data-iso="ru">Russie</option>
+          <option value="Sénégal" data-iso="sn">Sénégal</option>
+          <option value="Suède" data-iso="se">Suède</option>
+          <option value="Suisse" data-iso="ch">Suisse</option>
+          <option value="Togo" data-iso="tg">Togo</option>
+          <option value="Tunisie" data-iso="tn">Tunisie</option>
+          <option value="Turquie" data-iso="tr">Turquie</option>
+          <option value="Autre / Plusieurs pays" data-iso="">Autre / Plusieurs pays</option>
+        </select>
       </div>
 
       <div class="form-group">
@@ -704,6 +763,13 @@ const t = useTranslations(lang);
   line-height: 1.6; margin: 0.9rem 0 1.4rem; display: flex; gap: 0.4rem; align-items: flex-start;
 }
 
+/* intl-tel-input — intégration au style du formulaire */
+:global(.iti) { width: 100%; display: block; }
+:global(.form-group .iti__tel-input) {
+  padding-top: 0.75rem; padding-bottom: 0.75rem;
+  padding-left: 56px; padding-right: 1rem;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .hero           { grid-template-columns: 1fr; min-height: auto; }
@@ -733,6 +799,10 @@ const t = useTranslations(lang);
 }
 </style>
 
+<!-- intl-tel-input : indicatifs pays + formatage (auto-hébergé, aucun appel externe) -->
+<link rel="stylesheet" href="/vendor/intl-tel-input/css/intlTelInput.min.css" />
+<script is:inline src="/vendor/intl-tel-input/js/intlTelInputWithUtils.min.js"></script>
+
 <!-- Formulaire Formspree : validation accessible + consentement -->
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
@@ -745,6 +815,46 @@ const t = useTranslations(lang);
     const msgEmail = d.errEmail || 'Adresse email invalide.';
     const msgConsent = d.errConsent || 'Veuillez accepter la politique de confidentialité.';
     const originalLabel = submitBtn.textContent || 'Envoyer';
+    const msgPhone = d.errPhone || 'Numéro de téléphone invalide.';
+
+    // intl-tel-input : indicatif pays + formatage par pays (utils intégrés)
+    const phoneInput = document.getElementById('phone') as HTMLInputElement | null;
+    const phoneFull = document.getElementById('phone-full') as HTMLInputElement | null;
+    const countriesSelect = document.getElementById('countries') as HTMLSelectElement | null;
+    const itiFactory = (window as any).intlTelInput;
+    let iti: any = null;
+
+    if (phoneInput && itiFactory) {
+      const itiLang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+      const itiUi = itiLang === 'fr' ? {
+        searchPlaceholder: 'Rechercher',
+        countryListAriaLabel: 'Liste des pays',
+        selectedCountryAriaLabel: 'Pays sélectionné',
+        clearSearchAriaLabel: 'Effacer la recherche',
+        noCountrySelected: 'Aucun pays sélectionné',
+        searchEmptyState: 'Aucun pays trouvé',
+      } : {};
+
+      iti = itiFactory(phoneInput, {
+        initialCountry: 'fr',
+        countryOrder: ['fr', 'be', 'ch', 'lu', 'ca', 'gb', 'us', 'ma', 'dz', 'tn', 'sn', 'ci'],
+        countryNameLocale: itiLang,
+        formatAsYouType: true,
+        placeholderNumberPolicy: 'POLITE',
+        uiTranslations: itiUi,
+      });
+
+      // Le choix de l'indicatif pré-remplit « Pays concernés » (modifiable ensuite)
+      let userTouchedCountry = false;
+      countriesSelect?.addEventListener('change', () => { userTouchedCountry = true; });
+      phoneInput.addEventListener('countrychange', () => {
+        if (!iti || userTouchedCountry || !countriesSelect) return;
+        const sel = iti.getSelectedCountry();
+        const iso = (sel && sel.iso2 ? sel.iso2 : '').toLowerCase();
+        const match = countriesSelect.querySelector('option[data-iso="' + iso + '"]') as HTMLOptionElement | null;
+        if (match) countriesSelect.value = match.value;
+      });
+    }
 
     const errorFor = (field: Element) => {
       const id = field.getAttribute('aria-describedby');
@@ -784,6 +894,12 @@ const t = useTranslations(lang);
           clearError(el);
         }
       });
+      // Téléphone facultatif : s'il est renseigné, il doit être valide pour le pays
+      if (iti && phoneInput && phoneInput.value.trim() && !iti.isValidNumber()) {
+        flag(phoneInput, msgPhone);
+      } else if (phoneInput) {
+        clearError(phoneInput);
+      }
       return firstInvalid;
     };
 
@@ -802,6 +918,11 @@ const t = useTranslations(lang);
       submitBtn.disabled = true;
       submitBtn.textContent = d.sending || '…';
 
+      // Numéro complet au format international vers le champ envoyé
+      if (phoneFull) {
+        phoneFull.value = (iti && phoneInput && phoneInput.value.trim()) ? (iti.getNumber() || '') : '';
+      }
+
       try {
         const response = await fetch(form.action, {
           method: 'POST',
@@ -813,6 +934,8 @@ const t = useTranslations(lang);
           status.className = 'success';
           form.reset();
           form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+          if (iti) iti.setSelectedCountry('fr');
+          if (phoneFull) phoneFull.value = '';
         } else {
           throw new Error('server');
         }

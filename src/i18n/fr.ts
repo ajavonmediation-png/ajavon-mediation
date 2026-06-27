@@ -120,7 +120,7 @@ export const fr = {
     card2_title: "Règlement Bruxelles II ter",
     card2_text: "Maîtrise des règles européennes de compétence en matière parentale.",
     card3_title: "Multilinguisme",
-    card3_text: "Séances en français, anglais et mina. Interprètes disponibles.",
+    card3_text: "Séances en français et anglais. Interprètes disponibles.",
   },
 
   // Book
@@ -190,6 +190,7 @@ export const fr = {
     f_consent_after: ".",
     f_err_required: "Ce champ est obligatoire.",
     f_err_email: "Merci d'indiquer une adresse email valide.",
+    f_err_phone: "Ce numéro ne semble pas valide pour le pays sélectionné.",
     f_err_consent: "Merci d'accepter la politique de confidentialité pour envoyer votre demande.",
     f_sending: "Envoi en cours…",
     f_submit: "Envoyer ma demande",
@@ -217,6 +218,6 @@ export const fr = {
     c4: "Contact",
     legal: "Mentions légales",
     privacy: "Politique de confidentialité",
-    rights: "© 2025 AJAVON Médiation & Conseils. Tous droits réservés.",
+    rights: "© 2026 AJAVON Médiation & Conseils. Tous droits réservés.",
   },
 };

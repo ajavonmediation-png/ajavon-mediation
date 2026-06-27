@@ -1,16 +1,14 @@
 import { fr } from './fr';
 import { en } from './en';
-import { mina } from './mina';
 
 export const languages = {
   fr: 'Français',
   en: 'English',
-  mina: 'Mina',
 };
 
 export const defaultLang = 'fr';
 
-export const translations = { fr, en, mina };
+export const translations = { fr, en };
 
 export type Lang = keyof typeof translations;
 
