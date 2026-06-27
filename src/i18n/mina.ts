@@ -43,7 +43,7 @@ export const mina = {
     value3_title: "Aɖaŋu wɔwɔ",
     value3_desc: "Aɖaŋu shitsila kple aɖaŋu nɔlime siwo le gã vovovowo dome.",
     credential_title: "Agbɔgblɔ wɔla tɔtrɔ",
-    credential_name: "Me Ajavon",
+    credential_name: "M. Emile Ajavon",
   },
   services: {
     label: "Dɔwɔwɔ siwo míewɔ",

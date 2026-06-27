@@ -39,7 +39,7 @@ export const en = {
     value3_title: "International expertise",
     value3_desc: "Mastery of international conventions and foreign legal systems.",
     credential_title: "Certified mediator",
-    credential_name: "Me Ajavon",
+    credential_name: "M. Emile Ajavon",
   },
   services: {
     label: "Our services",

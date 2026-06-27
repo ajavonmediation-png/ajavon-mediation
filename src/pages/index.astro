@@ -302,28 +302,42 @@ const t = useTranslations(lang);
 
   <div class="contact-form fade-in">
     <!-- REMPLACER mdargqov par votre ID Formspree -->
-    <form id="contact-form" action="https://formspree.io/f/mdargqov" method="POST" novalidate>
+    <form id="contact-form" action="https://formspree.io/f/mdargqov" method="POST" novalidate
+          data-success={t.contact.f_success}
+          data-error={t.contact.f_error}
+          data-sending={t.contact.f_sending}
+          data-err-required={t.contact.f_err_required}
+          data-err-email={t.contact.f_err_email}
+          data-err-consent={t.contact.f_err_consent}>
+      <p class="form-note">{t.contact.f_required_note}</p>
+
       <div class="form-row">
         <div class="form-group">
-          <label for="firstname">{t.contact.f_firstname}</label>
-          <input type="text" id="firstname" name="firstname" placeholder="Marie" autocomplete="given-name" required />
+          <label for="firstname">{t.contact.f_firstname} <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="firstname" name="firstname" placeholder="Marie" autocomplete="given-name" required aria-required="true" aria-describedby="firstname-error" />
+          <span class="field-error" id="firstname-error" role="alert"></span>
         </div>
         <div class="form-group">
-          <label for="lastname">{t.contact.f_lastname}</label>
-          <input type="text" id="lastname" name="lastname" placeholder="Dupont" autocomplete="family-name" required />
+          <label for="lastname">{t.contact.f_lastname} <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="lastname" name="lastname" placeholder="Dupont" autocomplete="family-name" required aria-required="true" aria-describedby="lastname-error" />
+          <span class="field-error" id="lastname-error" role="alert"></span>
         </div>
       </div>
+
       <div class="form-group">
-        <label for="email">{t.contact.f_email}</label>
-        <input type="email" id="email" name="email" placeholder="marie@exemple.com" autocomplete="email" required />
+        <label for="email">{t.contact.f_email} <span class="req" aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" placeholder="marie@exemple.com" autocomplete="email" required aria-required="true" aria-describedby="email-error" />
+        <span class="field-error" id="email-error" role="alert"></span>
       </div>
+
       <div class="form-group">
         <label for="phone">{t.contact.f_phone}</label>
         <input type="tel" id="phone" name="phone" placeholder="+33 6 00 00 00 00" autocomplete="tel" />
       </div>
+
       <div class="form-group">
-        <label for="type">{t.contact.f_type}</label>
-        <select id="type" name="situation" required>
+        <label for="type">{t.contact.f_type} <span class="req" aria-hidden="true">*</span></label>
+        <select id="type" name="situation" required aria-required="true" aria-describedby="type-error">
           <option value="">{t.contact.f_type_placeholder}</option>
           <option value="france">{t.contact.f_type_1}</option>
           <option value="international">{t.contact.f_type_2}</option>
@@ -331,15 +345,29 @@ const t = useTranslations(lang);
           <option value="droits-visite">{t.contact.f_type_4}</option>
           <option value="autre">{t.contact.f_type_5}</option>
         </select>
+        <span class="field-error" id="type-error" role="alert"></span>
       </div>
+
       <div class="form-group">
         <label for="countries">{t.contact.f_countries}</label>
         <input type="text" id="countries" name="countries" placeholder={t.contact.f_countries_placeholder} />
       </div>
+
       <div class="form-group">
-        <label for="message">{t.contact.f_message}</label>
-        <textarea id="message" name="message" rows="4" placeholder={t.contact.f_message_placeholder} required></textarea>
+        <label for="message">{t.contact.f_message} <span class="req" aria-hidden="true">*</span></label>
+        <textarea id="message" name="message" rows="4" placeholder={t.contact.f_message_placeholder} required aria-required="true" aria-describedby="message-error"></textarea>
+        <span class="field-error" id="message-error" role="alert"></span>
       </div>
+
+      <!-- Consentement RGPD -->
+      <div class="form-consent">
+        <input type="checkbox" id="consent" name="consent" value="oui" required aria-required="true" aria-describedby="consent-error" />
+        <label for="consent">{t.contact.f_consent_before}<a href="/politique-de-confidentialite" target="_blank" rel="noopener">{t.contact.f_consent_link}</a>{t.contact.f_consent_after} <span class="req" aria-hidden="true">*</span></label>
+      </div>
+      <span class="field-error consent-error" id="consent-error" role="alert"></span>
+
+      <p class="form-privacy"><span aria-hidden="true">🔒</span> {t.contact.f_privacy_note}</p>
+
       <!-- Anti-spam honeypot -->
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
       <input type="hidden" name="_subject" value="Nouvelle demande de médiation - ajavon-mediation.com" />
@@ -650,6 +678,32 @@ const t = useTranslations(lang);
 .form-submit:hover { background: var(--deep); }
 .form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 
+/* Formulaire — validation, consentement, réassurance */
+.form-note { font-family: var(--font-sans); font-size: 0.78rem; color: var(--text-light); margin: 0 0 1.3rem; }
+.req { color: #c0392b; font-weight: 600; }
+.field-error { font-family: var(--font-sans); font-size: 0.78rem; color: #c0392b; line-height: 1.4; }
+.field-error:empty { display: none; }
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] { border-color: #c0392b; background: #fdf6f5; }
+.form-consent { display: flex; align-items: flex-start; gap: 0.65rem; margin: 0.4rem 0 0.3rem; }
+.form-consent input[type="checkbox"] {
+  width: 18px; height: 18px; margin-top: 0.15rem; flex-shrink: 0;
+  accent-color: var(--terra); cursor: pointer; appearance: auto;
+}
+.form-consent input[type="checkbox"][aria-invalid="true"] { outline: 2px solid #c0392b; outline-offset: 2px; }
+.form-consent label {
+  font-family: var(--font-sans); font-size: 0.85rem; line-height: 1.5;
+  color: var(--text); font-weight: 400; text-transform: none; letter-spacing: 0; cursor: pointer;
+}
+.form-consent label a { color: var(--terra); text-decoration: underline; text-underline-offset: 2px; }
+.form-consent label a:hover { color: var(--gold); }
+.consent-error { display: block; margin: 0.1rem 0 0.6rem; }
+.form-privacy {
+  font-family: var(--font-sans); font-size: 0.78rem; color: var(--text-light);
+  line-height: 1.6; margin: 0.9rem 0 1.4rem; display: flex; gap: 0.4rem; align-items: flex-start;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .hero           { grid-template-columns: 1fr; min-height: auto; }
@@ -679,43 +733,98 @@ const t = useTranslations(lang);
 }
 </style>
 
-<!-- Formulaire Formspree avec gestion JS -->
+<!-- Formulaire Formspree : validation accessible + consentement -->
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const status = document.getElementById('form-status') as HTMLElement;
   const submitBtn = form?.querySelector('.form-submit') as HTMLButtonElement;
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
+  if (form && status && submitBtn) {
+    const d = form.dataset;
+    const msgRequired = d.errRequired || 'Ce champ est obligatoire.';
+    const msgEmail = d.errEmail || 'Adresse email invalide.';
+    const msgConsent = d.errConsent || 'Veuillez accepter la politique de confidentialité.';
+    const originalLabel = submitBtn.textContent || 'Envoyer';
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = '…';
-    status.hidden = true;
-    status.className = '';
+    const errorFor = (field: Element) => {
+      const id = field.getAttribute('aria-describedby');
+      return id ? document.getElementById(id) : null;
+    };
+    const setError = (field: Element, msg: string) => {
+      field.setAttribute('aria-invalid', 'true');
+      const el = errorFor(field);
+      if (el) el.textContent = msg;
+    };
+    const clearError = (field: Element) => {
+      field.removeAttribute('aria-invalid');
+      const el = errorFor(field);
+      if (el) el.textContent = '';
+    };
 
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
+    form.querySelectorAll('input, select, textarea').forEach((el) => {
+      el.addEventListener('input', () => clearError(el));
+      el.addEventListener('change', () => clearError(el));
+    });
+
+    const validate = () => {
+      let firstInvalid: HTMLElement | null = null;
+      const flag = (el: Element, msg: string) => {
+        setError(el, msg);
+        if (!firstInvalid) firstInvalid = el as HTMLElement;
+      };
+      form.querySelectorAll('[required]').forEach((el) => {
+        const input = el as HTMLInputElement;
+        if (input.type === 'checkbox') {
+          if (!input.checked) flag(el, msgConsent); else clearError(el);
+        } else if (input.validity.valueMissing) {
+          flag(el, msgRequired);
+        } else if (input.validity.typeMismatch) {
+          flag(el, msgEmail);
+        } else {
+          clearError(el);
+        }
       });
+      return firstInvalid;
+    };
 
-      if (response.ok) {
-        status.textContent = form.dataset.success || 'Message envoyé ! Nous vous répondrons sous 24h.';
-        status.className = 'success';
-        form.reset();
-      } else {
-        throw new Error('server');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.hidden = true;
+      status.className = '';
+
+      const firstInvalid = validate();
+      if (firstInvalid) {
+        (firstInvalid as HTMLElement).focus();
+        (firstInvalid as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
       }
-    } catch {
-      status.textContent = form.dataset.error || 'Une erreur est survenue. Veuillez réessayer ou nous appeler directement.';
-      status.className = 'error';
-    } finally {
-      status.hidden = false;
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer ma demande';
-      status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  });
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = d.sending || '…';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (response.ok) {
+          status.textContent = d.success || 'Message envoyé !';
+          status.className = 'success';
+          form.reset();
+          form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+        } else {
+          throw new Error('server');
+        }
+      } catch {
+        status.textContent = d.error || 'Une erreur est survenue.';
+        status.className = 'error';
+      } finally {
+        status.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  }
 </script>
