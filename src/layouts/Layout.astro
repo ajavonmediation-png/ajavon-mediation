@@ -26,6 +26,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#F5F0E8" />
 
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
   <!-- SEO -->
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -50,6 +56,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://ajavon-mediation.com/og-image.jpg" />
 
   <!-- Polices auto-hébergées (déclarées dans global.css, aucun appel externe) -->
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import { useTranslations, getLocalePath } from '../i18n/index';
 
 const lang = 'fr';
@@ -34,9 +35,9 @@ const t = useTranslations(lang);
         <div class="globe-core">
           <span class="globe-text">Médiation<br>& Conseils</span>
         </div>
-        <div class="floating-tag tag-1">{t.hero.tag1}</div>
-        <div class="floating-tag tag-2">{t.hero.tag2}</div>
-        <div class="floating-tag tag-3">{t.hero.tag3}</div>
+        <div class="floating-tag tag-1"><Icon name="scale" size={15} /> {t.hero.tag1}</div>
+        <div class="floating-tag tag-2"><Icon name="globe" size={15} /> {t.hero.tag2}</div>
+        <div class="floating-tag tag-3"><Icon name="handshake" size={15} /> {t.hero.tag3}</div>
       </div>
     </div>
   </div>
@@ -66,21 +67,21 @@ const t = useTranslations(lang);
     <p class="about-text">{t.about.text2}</p>
     <div class="values-list">
       <div class="value-item">
-        <div class="value-icon" aria-hidden="true">⚖️</div>
+        <div class="value-icon"><Icon name="scale" size={20} /></div>
         <div class="value-text">
           <strong>{t.about.value1_title}</strong>
           <span>{t.about.value1_desc}</span>
         </div>
       </div>
       <div class="value-item">
-        <div class="value-icon" aria-hidden="true">🔒</div>
+        <div class="value-icon"><Icon name="lock" size={20} /></div>
         <div class="value-text">
           <strong>{t.about.value2_title}</strong>
           <span>{t.about.value2_desc}</span>
         </div>
       </div>
       <div class="value-item">
-        <div class="value-icon" aria-hidden="true">🌍</div>
+        <div class="value-icon"><Icon name="heart" size={20} /></div>
         <div class="value-text">
           <strong>{t.about.value3_title}</strong>
           <span>{t.about.value3_desc}</span>
@@ -92,7 +93,7 @@ const t = useTranslations(lang);
     <div class="portrait-frame">
       <img src="/photo-ajavon.jpg" alt="M. Emile Ajavon, médiateur familial international, au Palais de Justice" class="portrait-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
       <div class="portrait-placeholder" role="img" aria-label={`Portrait de ${t.about.credential_name}`} style="display:none;">
-        <span class="portrait-icon" aria-hidden="true">👤</span>
+        <span class="portrait-icon"><Icon name="user" size={48} /></span>
         <span class="portrait-caption">{t.about.credential_name}</span>
       </div>
       <div class="credential">
@@ -137,13 +138,13 @@ const t = useTranslations(lang);
   </div>
   <div class="other-grid" role="list">
     {[
-      { icon: '🛒', title: t.other.card1_title, desc: t.other.card1_desc, li: [t.other.card1_li1, t.other.card1_li2, t.other.card1_li3] },
-      { icon: '🤝', title: t.other.card2_title, desc: t.other.card2_desc, li: [t.other.card2_li1, t.other.card2_li2, t.other.card2_li3] },
-      { icon: '⚖️', title: t.other.card3_title, desc: t.other.card3_desc, li: [t.other.card3_li1, t.other.card3_li2, t.other.card3_li3] },
-      { icon: '🏛️', title: t.other.card4_title, desc: t.other.card4_desc, li: [t.other.card4_li1, t.other.card4_li2, t.other.card4_li3] },
+      { icon: 'shopping-cart', title: t.other.card1_title, desc: t.other.card1_desc, li: [t.other.card1_li1, t.other.card1_li2, t.other.card1_li3] },
+      { icon: 'users', title: t.other.card2_title, desc: t.other.card2_desc, li: [t.other.card2_li1, t.other.card2_li2, t.other.card2_li3] },
+      { icon: 'gavel', title: t.other.card3_title, desc: t.other.card3_desc, li: [t.other.card3_li1, t.other.card3_li2, t.other.card3_li3] },
+      { icon: 'landmark', title: t.other.card4_title, desc: t.other.card4_desc, li: [t.other.card4_li1, t.other.card4_li2, t.other.card4_li3] },
     ].map(c => (
       <article class="other-card fade-in" role="listitem">
-        <div class="other-icon" aria-hidden="true">{c.icon}</div>
+        <div class="other-icon"><Icon name={c.icon} size={30} /></div>
         <h3 class="other-title">{c.title}</h3>
         <p class="other-desc">{c.desc}</p>
         <ul class="other-list">
@@ -189,17 +190,17 @@ const t = useTranslations(lang);
   </div>
   <div class="intl-visual fade-in">
     <div class="intl-card intl-card-wide">
-      <div class="intl-card-icon" aria-hidden="true">📜</div>
+      <div class="intl-card-icon"><Icon name="scroll-text" size={26} /></div>
       <h3 class="intl-card-title">{t.international.card1_title}</h3>
       <p class="intl-card-text">{t.international.card1_text}</p>
     </div>
     <div class="intl-card">
-      <div class="intl-card-icon" aria-hidden="true">🤝</div>
+      <div class="intl-card-icon"><Icon name="globe" size={26} /></div>
       <h3 class="intl-card-title">{t.international.card2_title}</h3>
       <p class="intl-card-text">{t.international.card2_text}</p>
     </div>
     <div class="intl-card">
-      <div class="intl-card-icon" aria-hidden="true">💻</div>
+      <div class="intl-card-icon"><Icon name="languages" size={26} /></div>
       <h3 class="intl-card-title">{t.international.card3_title}</h3>
       <p class="intl-card-text">{t.international.card3_text}</p>
     </div>
@@ -214,14 +215,14 @@ const t = useTranslations(lang);
         <img src="/livre-couverture.jpg" alt="Couverture du livre Un autre regard sur l'intérêt supérieur de l'enfant, par Amah-Émile Ajavon" class="book-img" onerror="this.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';" />
       </a>
       <div class="book-placeholder" role="img" aria-label="Couverture du livre" style="display:none;">
-        <span aria-hidden="true">📚</span>
+        <Icon name="book" size={40} />
         <span class="book-placeholder-text">Un autre regard<br>sur l'intérêt<br>supérieur de l'enfant</span>
       </div>
       <div class="book-meta">
-        <div class="book-meta-item">📅 Septembre 2024</div>
-        <div class="book-meta-item">📄 240 pages</div>
-        <div class="book-meta-item">🏷️ ISBN : 9782342374995</div>
-        <div class="book-meta-item">🖨️ Format papier & ebook</div>
+        <div class="book-meta-item"><Icon name="calendar" size={15} /> Septembre 2024</div>
+        <div class="book-meta-item"><Icon name="file-text" size={15} /> 240 pages</div>
+        <div class="book-meta-item"><Icon name="barcode" size={15} /> ISBN : 9782342374995</div>
+        <div class="book-meta-item"><Icon name="book-open" size={15} /> Format papier & ebook</div>
       </div>
     </div>
     <div class="livre-content fade-in">
@@ -282,19 +283,19 @@ const t = useTranslations(lang);
     <p>{t.contact.intro}</p>
     <address class="contact-info">
       <div class="contact-item">
-        <span class="contact-item-icon" aria-hidden="true">📍</span>
+        <span class="contact-item-icon"><Icon name="map-pin" size={18} /></span>
         <span>{t.contact.address}</span>
       </div>
       <div class="contact-item">
-        <span class="contact-item-icon" aria-hidden="true">📞</span>
+        <span class="contact-item-icon"><Icon name="phone" size={18} /></span>
         <a href={`tel:${t.contact.phone.replace(/\s/g,'')}`}>{t.contact.phone}</a>
       </div>
       <div class="contact-item">
-        <span class="contact-item-icon" aria-hidden="true">✉️</span>
+        <span class="contact-item-icon"><Icon name="mail" size={18} /></span>
         <a href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
       </div>
       <div class="contact-item">
-        <span class="contact-item-icon" aria-hidden="true">🕐</span>
+        <span class="contact-item-icon"><Icon name="clock" size={18} /></span>
         <span>{t.contact.hours}</span>
       </div>
     </address>
@@ -425,7 +426,7 @@ const t = useTranslations(lang);
       </div>
       <span class="field-error consent-error" id="consent-error" role="alert"></span>
 
-      <p class="form-privacy"><span aria-hidden="true">🔒</span> {t.contact.f_privacy_note}</p>
+      <p class="form-privacy"><Icon name="shield-check" size={16} /> {t.contact.f_privacy_note}</p>
 
       <!-- Anti-spam honeypot -->
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
@@ -797,13 +798,41 @@ const t = useTranslations(lang);
   .globe-container { width: 280px; height: 280px; }
   .globe-core     { inset: 60px; }
 }
+
+/* ===== Icônes (Lucide, en trait fin, couleur héritée du contexte) ===== */
+.icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+/* Valeurs : icône centrée dans la boîte sable 36px */
+.value-icon { color: var(--terra); }
+.value-icon .icon { display: block; }
+
+/* Section « autres domaines » (fond sombre) : accent doré */
+.other-icon { color: var(--gold); line-height: 0; }
+
+/* Cartes international */
+.intl-card-icon { color: var(--terra); line-height: 0; }
+
+/* Portrait (repli si image absente) */
+.portrait-icon { color: var(--terra); line-height: 0; }
+
+/* Métadonnées du livre : icône + texte alignés horizontalement */
+.book-meta-item { display: flex; align-items: center; gap: 0.4rem; }
+.book-meta-item .icon { color: var(--terra); }
+
+/* Coordonnées (fond terracotta) : icône claire */
+.contact-item-icon { display: inline-flex; color: rgba(255, 255, 255, 0.9); }
+.contact-item-icon .icon { display: block; }
+
+/* Étiquettes flottantes du hero : icône + texte */
+.floating-tag { display: flex; align-items: center; gap: 0.4rem; }
+
+/* Note de confidentialité du formulaire : icône alignée à la 1re ligne */
+.form-privacy .icon { color: var(--terra); margin-top: 0.15rem; }
 </style>
 
 <!-- intl-tel-input : indicatifs pays + formatage (auto-hébergé, aucun appel externe) -->
 <link rel="stylesheet" href="/vendor/intl-tel-input/css/intlTelInput.min.css" />
-<script is:inline src="/vendor/intl-tel-input/js/intlTelInputWithUtils.min.js"></script>
-
-<!-- Formulaire Formspree : validation accessible + consentement -->
+<!-- Formulaire Formspree : validation accessible + consentement + téléphone international (script chargé à la demande) -->
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const status = document.getElementById('form-status') as HTMLElement;
@@ -821,10 +850,14 @@ const t = useTranslations(lang);
     const phoneInput = document.getElementById('phone') as HTMLInputElement | null;
     const phoneFull = document.getElementById('phone-full') as HTMLInputElement | null;
     const countriesSelect = document.getElementById('countries') as HTMLSelectElement | null;
-    const itiFactory = (window as any).intlTelInput;
     let iti: any = null;
+    let userTouchedCountry = false;
+    countriesSelect?.addEventListener('change', () => { userTouchedCountry = true; });
 
-    if (phoneInput && itiFactory) {
+    // Initialise intl-tel-input une fois son script chargé
+    const initPhone = () => {
+      const itiFactory = (window as any).intlTelInput;
+      if (!phoneInput || !itiFactory || iti) return;
       const itiLang = document.documentElement.lang === 'en' ? 'en' : 'fr';
       const itiUi = itiLang === 'fr' ? {
         searchPlaceholder: 'Rechercher',
@@ -845,8 +878,6 @@ const t = useTranslations(lang);
       });
 
       // Le choix de l'indicatif pré-remplit « Pays concernés » (modifiable ensuite)
-      let userTouchedCountry = false;
-      countriesSelect?.addEventListener('change', () => { userTouchedCountry = true; });
       phoneInput.addEventListener('countrychange', () => {
         if (!iti || userTouchedCountry || !countriesSelect) return;
         const sel = iti.getSelectedCountry();
@@ -854,6 +885,22 @@ const t = useTranslations(lang);
         const match = countriesSelect.querySelector('option[data-iso="' + iso + '"]') as HTMLOptionElement | null;
         if (match) countriesSelect.value = match.value;
       });
+    };
+
+    // Chargement différé : on ne télécharge le script (~300 Ko) qu'au premier
+    // contact avec le champ téléphone, pour alléger le chargement initial de la page.
+    let phoneScriptRequested = false;
+    const loadPhoneScript = () => {
+      if (phoneScriptRequested) return;
+      phoneScriptRequested = true;
+      if ((window as any).intlTelInput) { initPhone(); return; }
+      const s = document.createElement('script');
+      s.src = '/vendor/intl-tel-input/js/intlTelInputWithUtils.min.js';
+      s.onload = initPhone;
+      document.head.appendChild(s);
+    };
+    if (phoneInput) {
+      phoneInput.addEventListener('focus', loadPhoneScript, { once: true });
     }
 
     const errorFor = (field: Element) => {
@@ -920,7 +967,9 @@ const t = useTranslations(lang);
 
       // Numéro complet au format international vers le champ envoyé
       if (phoneFull) {
-        phoneFull.value = (iti && phoneInput && phoneInput.value.trim()) ? (iti.getNumber() || '') : '';
+        phoneFull.value = (phoneInput && phoneInput.value.trim())
+          ? (iti ? (iti.getNumber() || phoneInput.value) : phoneInput.value)
+          : '';
       }
 
       try {
