@@ -1,0 +1,119 @@
+---
+import { useTranslations, getLocalePath } from '../i18n/index';
+import type { Lang } from '../i18n/index';
+
+interface Props { lang: string; }
+const { lang } = Astro.props;
+const t = useTranslations(lang as Lang);
+---
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href={getLocalePath(lang as Lang)} class="footer-logo" aria-label="AJAVON Médiation">
+        <svg width="42" height="42" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="19" cy="19" r="17" stroke="#C4A35A" stroke-width="1.5"/>
+          <ellipse cx="19" cy="19" rx="8" ry="17" stroke="#C4A35A" stroke-width="1"/>
+          <line x1="2" y1="19" x2="36" y2="19" stroke="#C4A35A" stroke-width="1"/>
+          <line x1="4" y1="11" x2="34" y2="11" stroke="#C4A35A" stroke-width="0.8"/>
+          <line x1="4" y1="27" x2="34" y2="27" stroke="#C4A35A" stroke-width="0.8"/>
+          <text x="19" y="23" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" font-weight="600" fill="#FDFAF5">AEDA</text>
+        </svg>
+        <span class="footer-logo-text">
+          <span class="footer-logo-name">AJAVON</span>
+          <span class="footer-logo-sub">Médiation & Conseils</span>
+        </span>
+      </a>
+      <p>{t.footer.tagline}</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>{t.footer.services_title}</h4>
+      <ul>
+        <li><a href={`${getLocalePath(lang as Lang)}#services`}>{t.footer.s1}</a></li>
+        <li><a href={`${getLocalePath(lang as Lang)}#international`}>{t.footer.s2}</a></li>
+        <li><a href={`${getLocalePath(lang as Lang)}#services`}>{t.footer.s3}</a></li>
+        <li><a href={`${getLocalePath(lang as Lang)}#services`}>{t.footer.s4}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>{t.footer.resources_title}</h4>
+      <ul>
+        <li><a href={`${getLocalePath(lang as Lang)}#international`}>{t.footer.r1}</a></li>
+        <li><a href={`${getLocalePath(lang as Lang)}#contact`}>{t.footer.r2}</a></li>
+        <li><a href="#">{t.footer.r3}</a></li>
+        <li><a href="#">{t.footer.r4}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>{t.footer.cabinet_title}</h4>
+      <ul>
+        <li><a href={`${getLocalePath(lang as Lang)}#about`}>{t.footer.c1}</a></li>
+        <li><a href={`${getLocalePath(lang as Lang)}#about`}>{t.footer.c2}</a></li>
+        <li><a href="#">{t.footer.c3}</a></li>
+        <li><a href={`${getLocalePath(lang as Lang)}#contact`}>{t.footer.c4}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      {t.footer.rights}
+      &nbsp;·&nbsp;
+      <a href="#">{t.footer.legal}</a>
+      &nbsp;·&nbsp;
+      <a href="#">{t.footer.privacy}</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+footer {
+  background: var(--deep);
+  color: var(--cream);
+  padding: 4rem 6rem 2rem;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+.footer-logo {
+  display: flex; align-items: center; gap: 0.7rem;
+  margin-bottom: 1rem; text-decoration: none;
+}
+.footer-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.footer-logo-name { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; color: var(--white); }
+.footer-logo-sub  { font-size: 0.65rem; font-weight: 300; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.7; opacity: 0.6; font-weight: 300; max-width: 320px; }
+
+.footer-col h4 {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+  font-family: var(--font-sans);
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col ul a { font-size: 0.85rem; opacity: 0.6; color: var(--cream); transition: opacity 0.3s; }
+.footer-col ul a:hover { opacity: 1; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 2rem;
+  text-align: center;
+}
+.footer-bottom p { font-size: 0.78rem; opacity: 0.5; color: var(--cream); }
+.footer-bottom a { color: var(--cream); opacity: 0.5; text-decoration: none; transition: opacity 0.3s; }
+.footer-bottom a:hover { opacity: 1; }
+
+@media (max-width: 1024px) {
+  footer { padding: 4rem 2.5rem 2rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+}
+@media (max-width: 640px) {
+  footer { padding: 3rem 1.5rem 2rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+}
+</style>

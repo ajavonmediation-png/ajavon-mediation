@@ -1,0 +1,128 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/index';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+}
+
+const { 
+  title = "AJAVON Médiation — Médiation Familiale Internationale",
+  description = "Cabinet spécialisé en médiation familiale nationale et internationale. Enlèvement parental, droits de visite, divorce transfrontalier. Première consultation gratuite.",
+  lang = "fr"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="robots" content="index, follow" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="fr" href="https://ajavon-mediation.com/" />
+  <link rel="alternate" hreflang="en" href="https://ajavon-mediation.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://ajavon-mediation.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://ajavon-mediation.com/og-image.jpg" />
+  <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'fr_FR'} />
+  <meta property="og:site_name" content="AJAVON Médiation & Conseils" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "AJAVON Médiation & Conseils",
+    "description": "Cabinet spécialisé en médiation familiale nationale et internationale.",
+    "url": "https://ajavon-mediation.com",
+    "telephone": "+33766636460",
+    "email": "contact@ajavon-mediation.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "81, rue René Messeaux",
+      "addressLocality": "La Ferté-sous-Jouarre",
+      "postalCode": "77260",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.9505,
+      "longitude": 3.1297
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "priceRange": "€€",
+    "areaServed": "FR",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <Nav lang={lang} />
+  <main>
+    <slot />
+  </main>
+  <Footer lang={lang} />
+
+  <script>
+    // Intersection Observer pour les animations fade-in
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+    // Effet scroll sur la nav
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (nav) {
+        nav.style.boxShadow = window.scrollY > 50
+          ? '0 4px 30px rgba(44,36,22,0.1)'
+          : 'none';
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>

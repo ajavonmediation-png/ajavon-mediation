@@ -1,0 +1,161 @@
+---
+import { useTranslations, getLocalePath, languages } from '../i18n/index';
+import type { Lang } from '../i18n/index';
+
+interface Props { lang: string; }
+const { lang } = Astro.props;
+const t = useTranslations(lang as Lang);
+---
+
+<nav>
+  <a href={getLocalePath(lang as Lang)} class="nav-logo" aria-label="AJAVON Médiation - Accueil">
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="19" cy="19" r="17" stroke="#C4A35A" stroke-width="1.5"/>
+      <ellipse cx="19" cy="19" rx="8" ry="17" stroke="#C4A35A" stroke-width="1"/>
+      <line x1="2" y1="19" x2="36" y2="19" stroke="#C4A35A" stroke-width="1"/>
+      <line x1="4" y1="11" x2="34" y2="11" stroke="#C4A35A" stroke-width="0.8"/>
+      <line x1="4" y1="27" x2="34" y2="27" stroke="#C4A35A" stroke-width="0.8"/>
+      <text x="19" y="23" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" font-weight="600" fill="#2C2416">AEDA</text>
+    </svg>
+    <span class="nav-logo-text">
+      <span class="nav-logo-name">AJAVON</span>
+      <span class="nav-logo-sub">Médiation & Conseils</span>
+    </span>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href={`${getLocalePath(lang as Lang)}#services`}>{t.nav.services}</a></li>
+    <li><a href={`${getLocalePath(lang as Lang)}#processus`}>{t.nav.process}</a></li>
+    <li><a href={`${getLocalePath(lang as Lang)}#international`}>{t.nav.international}</a></li>
+    <li><a href={`${getLocalePath(lang as Lang)}#contact`}>{t.nav.contact}</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <!-- Sélecteur de langue -->
+    <div class="lang-switcher" role="navigation" aria-label="Sélection de la langue">
+      {Object.entries(languages).map(([code, label]) => (
+        <a
+          href={getLocalePath(code as Lang)}
+          class={`lang-btn ${lang === code ? 'active' : ''}`}
+          hreflang={code}
+          aria-current={lang === code ? 'page' : undefined}
+          aria-label={`${label} version`}
+        >
+          {code.toUpperCase()}
+        </a>
+      ))}
+    </div>
+    <a href={`${getLocalePath(lang as Lang)}#contact`} class="nav-cta">{t.nav.cta}</a>
+  </div>
+
+  <!-- Burger mobile -->
+  <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Menu mobile -->
+<div id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Menu de navigation" hidden>
+  <ul>
+    <li><a href={`${getLocalePath(lang as Lang)}#services`}>{t.nav.services}</a></li>
+    <li><a href={`${getLocalePath(lang as Lang)}#processus`}>{t.nav.process}</a></li>
+    <li><a href={`${getLocalePath(lang as Lang)}#international`}>{t.nav.international}</a></li>
+    <li><a href={`${getLocalePath(lang as Lang)}#contact`}>{t.nav.contact}</a></li>
+  </ul>
+  <div class="mobile-lang">
+    {Object.entries(languages).map(([code, label]) => (
+      <a href={getLocalePath(code as Lang)} class={`lang-btn ${lang === code ? 'active' : ''}`}>{code.toUpperCase()}</a>
+    ))}
+  </div>
+  <a href={`${getLocalePath(lang as Lang)}#contact`} class="btn-primary">{t.nav.cta}</a>
+</div>
+
+<style>
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.5rem 4rem;
+  background: rgba(245,240,232,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,163,90,0.2);
+  transition: box-shadow 0.4s ease;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.7rem;
+  text-decoration: none;
+}
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.nav-logo-name { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; color: var(--deep); }
+.nav-logo-sub  { font-size: 0.65rem; font-weight: 300; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a {
+  font-size: 0.8rem; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--terra);
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.lang-switcher { display: flex; gap: 0.5rem; }
+.lang-btn {
+  font-size: 0.7rem; letter-spacing: 0.1em;
+  background: none; border: 1px solid rgba(139,107,74,0.3);
+  color: var(--terra); padding: 0.25rem 0.6rem;
+  transition: all 0.3s; cursor: pointer; font-family: var(--font-sans);
+}
+.lang-btn:hover, .lang-btn.active {
+  border-color: var(--gold); color: var(--gold);
+  background: rgba(196,163,90,0.08);
+}
+.nav-cta {
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white);
+  background: var(--terra); border: none; padding: 0.7rem 1.6rem;
+  cursor: pointer; transition: background 0.3s; text-decoration: none;
+}
+.nav-cta:hover { background: var(--deep); }
+
+.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--terra); transition: all 0.3s; }
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 99;
+  background: var(--cream);
+  padding: 6rem 2.5rem 3rem;
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.mobile-menu[hidden] { display: none; }
+.mobile-menu ul { display: flex; flex-direction: column; gap: 1.5rem; }
+.mobile-menu a {
+  font-size: 1.2rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--terra);
+}
+.mobile-lang { display: flex; gap: 0.8rem; }
+
+@media (max-width: 1024px) {
+  nav { padding: 1.2rem 2rem; }
+  .nav-links, .lang-switcher, .nav-cta { display: none; }
+  .burger { display: flex; }
+}
+</style>
+
+<script>
+  const burger = document.querySelector('.burger') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-menu') as HTMLElement;
+  const links = menu?.querySelectorAll('a');
+
+  burger?.addEventListener('click', () => {
+    const isOpen = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!isOpen));
+    if (isOpen) { menu.hidden = true; } else { menu.hidden = false; }
+  });
+
+  links?.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.hidden = true;
+      burger?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

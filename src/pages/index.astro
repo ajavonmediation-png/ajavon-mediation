@@ -1,0 +1,673 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useTranslations, getLocalePath } from '../i18n/index';
+
+const lang = 'fr';
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="AJAVON Médiation — Médiation Familiale & Internationale | La Ferté-sous-Jouarre"
+  description="Cabinet spécialisé en médiation familiale nationale et internationale. Enlèvement parental, droits de visite, divorce transfrontalier. Première consultation gratuite. Me Ajavon, La Ferté-sous-Jouarre."
+  lang={lang}
+>
+
+<!-- ══ HERO ══ -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-left fade-in">
+    <div class="hero-eyebrow">{t.hero.eyebrow}</div>
+    <h1>
+      {t.hero.title1}<br>
+      {t.hero.title2}<br>
+      <em>{t.hero.title3}</em><br>
+      {t.hero.title4}
+    </h1>
+    <p class="hero-desc">{t.hero.desc}</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">{t.hero.cta_primary}</a>
+      <a href="#services" class="btn-ghost">{t.hero.cta_secondary}</a>
+    </div>
+  </div>
+
+  <div class="hero-right" aria-hidden="true">
+    <div class="hero-image-bg"></div>
+    <div class="hero-visual">
+      <div class="globe-container">
+        <div class="globe-ring"></div>
+        <div class="globe-ring"></div>
+        <div class="globe-ring"></div>
+        <div class="globe-core">
+          <span class="globe-text">Médiation<br>& Conseils</span>
+        </div>
+        <div class="floating-tag tag-1">{t.hero.tag1}</div>
+        <div class="floating-tag tag-2">{t.hero.tag2}</div>
+        <div class="floating-tag tag-3">{t.hero.tag3}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats" aria-label="Chiffres clés">
+    <div class="stat">
+      <div class="stat-num">{t.hero.stat1_num}</div>
+      <div class="stat-label">{t.hero.stat1_label}</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">{t.hero.stat2_num}</div>
+      <div class="stat-label">{t.hero.stat2_label}</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">{t.hero.stat3_num}</div>
+      <div class="stat-label">{t.hero.stat3_label}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about" id="about" aria-label={t.about.label}>
+  <div class="about-left fade-in">
+    <div class="section-label">{t.about.label}</div>
+    <h2>{t.about.title1}<br><em>{t.about.title2}</em></h2>
+    <p class="about-text">{t.about.text1}</p>
+    <p class="about-text">{t.about.text2}</p>
+    <div class="values-list">
+      <div class="value-item">
+        <div class="value-icon" aria-hidden="true">⚖️</div>
+        <div class="value-text">
+          <strong>{t.about.value1_title}</strong>
+          <span>{t.about.value1_desc}</span>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon" aria-hidden="true">🔒</div>
+        <div class="value-text">
+          <strong>{t.about.value2_title}</strong>
+          <span>{t.about.value2_desc}</span>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon" aria-hidden="true">🌍</div>
+        <div class="value-text">
+          <strong>{t.about.value3_title}</strong>
+          <span>{t.about.value3_desc}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right fade-in">
+    <div class="portrait-frame">
+      <div class="portrait-placeholder" role="img" aria-label="Portrait de Me Ajavon">
+        <span class="portrait-icon" aria-hidden="true">👤</span>
+        <span class="portrait-caption">Me Ajavon</span>
+      </div>
+      <div class="credential">
+        <div class="credential-title">{t.about.credential_title}</div>
+        <div class="credential-name">{t.about.credential_name}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="services" id="services" aria-label={t.services.label}>
+  <div class="services-header">
+    <div class="section-label centered">{t.services.label}</div>
+    <h2>{t.services.title1}<br><em>{t.services.title2}</em></h2>
+  </div>
+  <div class="services-grid" role="list">
+    {[
+      { num: '01', title: t.services.s1_title, desc: t.services.s1_desc, tag: t.services.s1_tag },
+      { num: '02', title: t.services.s2_title, desc: t.services.s2_desc, tag: t.services.s2_tag },
+      { num: '03', title: t.services.s3_title, desc: t.services.s3_desc, tag: t.services.s3_tag },
+      { num: '04', title: t.services.s4_title, desc: t.services.s4_desc, tag: t.services.s4_tag },
+      { num: '05', title: t.services.s5_title, desc: t.services.s5_desc, tag: t.services.s5_tag },
+      { num: '06', title: t.services.s6_title, desc: t.services.s6_desc, tag: t.services.s6_tag },
+    ].map(s => (
+      <article class="service-card fade-in" role="listitem">
+        <div class="service-number" aria-hidden="true">{s.num}</div>
+        <h3 class="service-title">{s.title}</h3>
+        <p class="service-desc">{s.desc}</p>
+        <span class="service-tag">{s.tag}</span>
+      </article>
+    ))}
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="process" id="processus" aria-label={t.process.label}>
+  <div class="section-label">{t.process.label}</div>
+  <h2>{t.process.title1}<br><em>{t.process.title2}</em></h2>
+  <ol class="process-steps">
+    {[
+      { num: '1', title: t.process.step1_title, desc: t.process.step1_desc },
+      { num: '2', title: t.process.step2_title, desc: t.process.step2_desc },
+      { num: '3', title: t.process.step3_title, desc: t.process.step3_desc },
+      { num: '4', title: t.process.step4_title, desc: t.process.step4_desc },
+    ].map(step => (
+      <li class="step fade-in">
+        <div class="step-num" aria-hidden="true">{step.num}</div>
+        <h3 class="step-title">{step.title}</h3>
+        <p class="step-desc">{step.desc}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<!-- ══ INTERNATIONAL ══ -->
+<section class="international" id="international" aria-label={t.international.label}>
+  <div class="intl-content fade-in">
+    <div class="section-label">{t.international.label}</div>
+    <h2>{t.international.title1}<br><em>{t.international.title2}</em></h2>
+    <p class="intl-text">{t.international.text1}</p>
+    <p class="intl-text">{t.international.text2}</p>
+    <div class="countries-grid" role="list" aria-label="Pays couverts">
+      {t.international.countries.map(country => (
+        <div class="country-chip" role="listitem">{country}</div>
+      ))}
+    </div>
+  </div>
+  <div class="intl-visual fade-in">
+    <div class="intl-card intl-card-wide">
+      <div class="intl-card-icon" aria-hidden="true">📜</div>
+      <h3 class="intl-card-title">{t.international.card1_title}</h3>
+      <p class="intl-card-text">{t.international.card1_text}</p>
+    </div>
+    <div class="intl-card">
+      <div class="intl-card-icon" aria-hidden="true">🤝</div>
+      <h3 class="intl-card-title">{t.international.card2_title}</h3>
+      <p class="intl-card-text">{t.international.card2_text}</p>
+    </div>
+    <div class="intl-card">
+      <div class="intl-card-icon" aria-hidden="true">💻</div>
+      <h3 class="intl-card-title">{t.international.card3_title}</h3>
+      <p class="intl-card-text">{t.international.card3_text}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LIVRE ══ -->
+<section class="livre" id="livre" aria-label={t.book.label}>
+  <div class="livre-inner">
+    <div class="book-wrapper fade-in">
+      <div class="book-placeholder" role="img" aria-label="Couverture du livre">
+        <span aria-hidden="true">📚</span>
+        <span class="book-placeholder-text">Un autre regard<br>sur l'intérêt<br>supérieur de l'enfant</span>
+      </div>
+      <div class="book-meta">
+        <div class="book-meta-item">📖 Publibook Éditions</div>
+        <div class="book-meta-item">📄 ISBN : 978-2-342-37499-5</div>
+        <div class="book-meta-item">📅 2023</div>
+      </div>
+    </div>
+    <div class="livre-content fade-in">
+      <div class="section-label">{t.book.label}</div>
+      <h2>{t.book.title1}<br><em>{t.book.title2}</em></h2>
+      <p class="livre-accroche">{t.book.accroche}</p>
+      <div class="livre-keywords" aria-label="Mots-clés">
+        {[t.book.kw1, t.book.kw2, t.book.kw3, t.book.kw4].map(kw => (
+          <span class="keyword">{kw}</span>
+        ))}
+      </div>
+      <p class="livre-desc">{t.book.desc1}</p>
+      <p class="livre-desc">{t.book.desc2}</p>
+      <div class="livre-prices">
+        <div class="price-block">
+          <div class="price-label">{t.book.format_paper}</div>
+          <div class="price-amount">{t.book.price_paper}</div>
+        </div>
+        <div class="price-block">
+          <div class="price-label">{t.book.format_ebook}</div>
+          <div class="price-amount">{t.book.price_ebook}</div>
+        </div>
+      </div>
+      <div class="livre-actions">
+        <a href="https://librairie.publibook.com/economie-droit/15580-un-autre-regard-sur-linteret-superieur-de-lenfant-9782342374995.html" target="_blank" rel="noopener noreferrer" class="btn-primary">{t.book.cta_buy}</a>
+        <a href="https://www.amazon.fr/autre-regard-sur-lint%C3%A9r%C3%AAt-lenfant/dp/2407010523" target="_blank" rel="noopener noreferrer" class="btn-ghost">{t.book.cta_amazon}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TÉMOIGNAGES ══ -->
+<section class="testimonials" aria-label={t.testimonials.label}>
+  <div class="section-label centered">{t.testimonials.label}</div>
+  <h2>{t.testimonials.title1} <em>{t.testimonials.title2}</em></h2>
+  <div class="testimonials-grid">
+    {[
+      { text: t.testimonials.t1_text, author: t.testimonials.t1_author, ctx: t.testimonials.t1_context },
+      { text: t.testimonials.t2_text, author: t.testimonials.t2_author, ctx: t.testimonials.t2_context },
+      { text: t.testimonials.t3_text, author: t.testimonials.t3_author, ctx: t.testimonials.t3_context },
+    ].map(testimonial => (
+      <blockquote class="testimonial fade-in">
+        <p class="testimonial-text">{testimonial.text}</p>
+        <footer class="testimonial-author">
+          <strong>{testimonial.author}</strong>
+          <span>{testimonial.ctx}</span>
+        </footer>
+      </blockquote>
+    ))}
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact" id="contact" aria-label={t.contact.label}>
+  <div class="contact-left fade-in">
+    <div class="section-label">{t.contact.label}</div>
+    <h2>{t.contact.title1}<br><em>{t.contact.title2}</em></h2>
+    <p>{t.contact.intro}</p>
+    <address class="contact-info">
+      <div class="contact-item">
+        <span class="contact-item-icon" aria-hidden="true">📍</span>
+        <span>{t.contact.address}</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon" aria-hidden="true">📞</span>
+        <a href={`tel:${t.contact.phone.replace(/\s/g,'')}`}>{t.contact.phone}</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon" aria-hidden="true">✉️</span>
+        <a href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon" aria-hidden="true">🕐</span>
+        <span>{t.contact.hours}</span>
+      </div>
+    </address>
+  </div>
+
+  <div class="contact-form fade-in">
+    <!-- REMPLACER YOUR_FORM_ID par votre ID Formspree -->
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstname">{t.contact.f_firstname}</label>
+          <input type="text" id="firstname" name="firstname" placeholder="Marie" autocomplete="given-name" required />
+        </div>
+        <div class="form-group">
+          <label for="lastname">{t.contact.f_lastname}</label>
+          <input type="text" id="lastname" name="lastname" placeholder="Dupont" autocomplete="family-name" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">{t.contact.f_email}</label>
+        <input type="email" id="email" name="email" placeholder="marie@exemple.com" autocomplete="email" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">{t.contact.f_phone}</label>
+        <input type="tel" id="phone" name="phone" placeholder="+33 6 00 00 00 00" autocomplete="tel" />
+      </div>
+      <div class="form-group">
+        <label for="type">{t.contact.f_type}</label>
+        <select id="type" name="situation" required>
+          <option value="">{t.contact.f_type_placeholder}</option>
+          <option value="france">{t.contact.f_type_1}</option>
+          <option value="international">{t.contact.f_type_2}</option>
+          <option value="enlevement">{t.contact.f_type_3}</option>
+          <option value="droits-visite">{t.contact.f_type_4}</option>
+          <option value="autre">{t.contact.f_type_5}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="countries">{t.contact.f_countries}</label>
+        <input type="text" id="countries" name="countries" placeholder={t.contact.f_countries_placeholder} />
+      </div>
+      <div class="form-group">
+        <label for="message">{t.contact.f_message}</label>
+        <textarea id="message" name="message" rows="4" placeholder={t.contact.f_message_placeholder} required></textarea>
+      </div>
+      <!-- Anti-spam honeypot -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <input type="hidden" name="_subject" value="Nouvelle demande de médiation - ajavon-mediation.com" />
+
+      <div id="form-status" role="alert" aria-live="polite" hidden></div>
+      <button type="submit" class="form-submit">{t.contact.f_submit}</button>
+    </form>
+  </div>
+</section>
+
+</Layout>
+
+<!-- ══ STYLES PAGE ══ -->
+<style>
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 4rem 6rem 6rem;
+  position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 40px; height: 1px; background: var(--gold);
+}
+.hero-desc {
+  font-size: 1rem; line-height: 1.8; color: var(--text);
+  max-width: 460px; margin-bottom: 3rem; font-weight: 300;
+}
+.hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+
+.hero-right { position: relative; overflow: hidden; }
+.hero-image-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(139,107,74,0.15) 0%, transparent 50%),
+              linear-gradient(to bottom, var(--sand) 0%, var(--cream) 100%);
+}
+.hero-visual {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.globe-container { position: relative; width: 420px; height: 420px; }
+.globe-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid rgba(196,163,90,0.3);
+  animation: rotate 20s linear infinite;
+}
+.globe-ring:nth-child(2) { inset: 30px; border-color: rgba(139,107,74,0.2); animation-duration: 30s; animation-direction: reverse; }
+.globe-ring:nth-child(3) { inset: 70px; border-color: rgba(196,163,90,0.15); animation-duration: 15s; }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.globe-core {
+  position: absolute; inset: 100px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--sand), var(--terra));
+  box-shadow: 0 20px 60px rgba(139,107,74,0.4), inset 0 -10px 30px rgba(0,0,0,0.2);
+  display: flex; align-items: center; justify-content: center;
+}
+.globe-text {
+  font-family: var(--font-serif); font-size: 1.1rem; font-style: italic;
+  color: var(--white); text-align: center; opacity: 0.9;
+}
+.floating-tag {
+  position: absolute; background: var(--white);
+  padding: 0.7rem 1.2rem; box-shadow: var(--shadow-sm);
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.06em; color: var(--terra);
+  animation: float 6s ease-in-out infinite;
+}
+.tag-1 { top: 60px; left: -20px; }
+.tag-2 { bottom: 80px; right: -10px; animation-delay: 2s; }
+.tag-3 { top: 50%; left: -40px; animation-delay: 4s; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+.hero-stats {
+  position: absolute; bottom: 3rem; left: 6rem;
+  display: flex; gap: 3rem; z-index: 2;
+}
+.stat-num {
+  font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600;
+  color: var(--terra); line-height: 1;
+}
+.stat-label {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-light); margin-top: 0.3rem;
+}
+
+/* ABOUT */
+.about {
+  background: var(--white);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+}
+.about-text { font-size: 1rem; line-height: 1.9; color: var(--text); font-weight: 300; margin-bottom: 1.5rem; }
+.about-left h2 { margin-bottom: 2rem; }
+.values-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.value-item { display: flex; align-items: flex-start; gap: 1.2rem; }
+.value-icon {
+  width: 36px; height: 36px; background: var(--sand);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.value-text strong { display: block; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; color: var(--terra); margin-bottom: 0.2rem; }
+.value-text span { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
+.portrait-frame { position: relative; background: var(--sand); padding: 3rem; }
+.portrait-frame::before {
+  content: ''; position: absolute; top: -15px; left: -15px; right: 15px; bottom: 15px;
+  border: 1px solid rgba(196,163,90,0.4); pointer-events: none;
+}
+.portrait-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--sand) 0%, #d4c4a0 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+}
+.portrait-icon { font-size: 4rem; opacity: 0.4; }
+.portrait-caption { font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: var(--terra); opacity: 0.7; }
+.credential {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: var(--terra); color: var(--white); padding: 1.2rem 1.5rem;
+}
+.credential-title { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; }
+.credential-name { font-family: var(--font-serif); font-size: 1.1rem; margin-top: 0.3rem; }
+
+/* SERVICES */
+.services { background: var(--cream); }
+.services-header { text-align: center; margin-bottom: 4rem; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 3rem;
+}
+.service-card {
+  background: var(--white); padding: 2.5rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative; overflow: hidden;
+}
+.service-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.service-card:hover::after { transform: scaleX(1); }
+.service-number { font-family: var(--font-serif); font-size: 3rem; font-weight: 300; color: var(--sand); line-height: 1; margin-bottom: 1rem; }
+.service-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 400; color: var(--deep); margin-bottom: 1rem; line-height: 1.3; }
+.service-desc { font-size: 0.88rem; line-height: 1.8; color: #6a5e4a; font-weight: 300; }
+.service-tag {
+  display: inline-block; margin-top: 1.5rem;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); border-top: 1px solid var(--mist); padding-top: 1rem; width: 100%;
+}
+
+/* PROCESS */
+.process { background: var(--deep); color: var(--cream); }
+.process .section-label { color: var(--gold); }
+.process h2 { color: var(--cream); margin-bottom: 4rem; }
+.process h2 em { color: var(--gold); }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; list-style: none; }
+.step { position: relative; }
+.step::after {
+  content: '→'; position: absolute; top: 1.5rem; right: -1rem;
+  color: var(--terra); font-size: 1.2rem;
+}
+.step:last-child::after { display: none; }
+.step-num { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 300; color: var(--terra); line-height: 1; margin-bottom: 1.2rem; }
+.step-title { font-family: var(--font-serif); font-size: 1.2rem; color: var(--cream); margin-bottom: 0.8rem; }
+.step-desc { font-size: 0.85rem; line-height: 1.7; color: #a09282; font-weight: 300; }
+
+/* INTERNATIONAL */
+.international { background: var(--sand); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.intl-text { font-size: 1rem; line-height: 1.9; color: var(--text); font-weight: 300; margin-bottom: 1.5rem; }
+.intl-content h2 { margin-bottom: 2rem; }
+.countries-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 2rem; }
+.country-chip {
+  background: var(--white); padding: 0.6rem 1rem;
+  font-size: 0.8rem; color: var(--terra); letter-spacing: 0.06em;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.country-chip::before { content: '◆'; font-size: 0.5rem; color: var(--gold); }
+.intl-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.intl-card { background: var(--white); padding: 1.8rem; }
+.intl-card-wide { grid-column: 1 / -1; }
+.intl-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+.intl-card-title { font-family: var(--font-serif); font-size: 1.1rem; color: var(--deep); margin-bottom: 0.5rem; }
+.intl-card-text { font-size: 0.83rem; line-height: 1.6; color: var(--text-light); }
+
+/* LIVRE */
+.livre { background: var(--white); }
+.livre-inner { display: grid; grid-template-columns: 320px 1fr; gap: 6rem; align-items: start; }
+.book-wrapper { position: relative; box-shadow: -8px 8px 30px rgba(44,36,22,0.25); }
+.book-placeholder {
+  width: 100%; aspect-ratio: 2/3;
+  background: linear-gradient(135deg, var(--sand), var(--terra));
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem; padding: 2rem; color: var(--white);
+}
+.book-placeholder span:first-child { font-size: 3rem; }
+.book-placeholder-text { font-family: var(--font-serif); font-size: 1rem; text-align: center; font-style: italic; line-height: 1.4; opacity: 0.9; }
+.book-meta { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.book-meta-item { font-size: 0.82rem; color: var(--text-light); }
+.livre-accroche { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--terra); line-height: 1.6; margin: 1.5rem 0; }
+.livre-keywords { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.keyword { background: var(--sand); color: var(--terra); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.4rem 0.9rem; text-transform: uppercase; }
+.livre-desc { font-size: 0.95rem; line-height: 1.9; color: var(--text); font-weight: 300; margin-bottom: 1rem; }
+.livre-prices { display: flex; gap: 2rem; margin: 2rem 0; }
+.price-block { text-align: center; padding: 1rem 1.5rem; border: 1px solid var(--sand); }
+.price-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.4rem; }
+.price-amount { font-family: var(--font-serif); font-size: 1.8rem; color: var(--terra); font-weight: 600; }
+.livre-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.livre-content h2 { margin-bottom: 0.5rem; }
+
+/* TESTIMONIALS */
+.testimonials { background: var(--cream); text-align: center; }
+.testimonials h2 { margin-bottom: 3rem; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: left; margin-top: 3rem; }
+.testimonial { background: var(--white); padding: 2.5rem; position: relative; }
+.testimonial::before {
+  content: '"'; font-family: var(--font-serif); font-size: 5rem;
+  color: var(--gold); opacity: 0.3;
+  position: absolute; top: 1rem; left: 1.5rem; line-height: 1;
+}
+.testimonial-text { font-size: 0.92rem; line-height: 1.8; color: var(--text); font-weight: 300; margin-bottom: 1.5rem; padding-top: 1.5rem; font-style: italic; }
+.testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; color: var(--terra); }
+.testimonial-author span { font-size: 0.78rem; color: var(--text-light); }
+
+/* CONTACT */
+.contact {
+  background: var(--terra);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+}
+.contact-left { color: var(--white); }
+.contact-left .section-label { color: rgba(255,255,255,0.6); }
+.contact-left .section-label::before { background: rgba(255,255,255,0.4); }
+.contact-left h2 { color: var(--white); margin-bottom: 1.5rem; }
+.contact-left h2 em { color: rgba(255,255,255,0.85); }
+.contact-left > p { color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; font-style: normal; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+.contact-item-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+.contact-item span,
+.contact-item a { font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6; }
+.contact-item a:hover { color: var(--white); text-decoration: underline; }
+
+.contact-form { background: var(--white); padding: 2.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+.form-group label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--terra); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--sand);
+  background: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.92rem; color: var(--deep);
+  transition: border-color 0.3s;
+  border-radius: 0;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--terra); outline: none; }
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+#form-status {
+  padding: 1rem; margin-bottom: 1rem;
+  font-size: 0.9rem; line-height: 1.6;
+  border-radius: 0;
+}
+#form-status.success { background: #f0f7f0; color: #2d6a2d; border-left: 3px solid #4caf50; }
+#form-status.error   { background: #fdf0f0; color: #8b2222; border-left: 3px solid #e53935; }
+
+.form-submit {
+  width: 100%; background: var(--terra); color: var(--white);
+  border: none; padding: 1rem;
+  font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  transition: background 0.3s;
+}
+.form-submit:hover { background: var(--deep); }
+.form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero           { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left      { padding: 5rem 2.5rem 3rem; }
+  .hero-right     { height: 400px; }
+  .hero-stats     { left: 2.5rem; bottom: 2rem; gap: 2rem; }
+  .about, .international, .contact { grid-template-columns: 1fr; gap: 3rem; }
+  .services-grid  { grid-template-columns: repeat(2, 1fr); }
+  .process-steps  { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .livre-inner    { grid-template-columns: 1fr; }
+  .book-wrapper   { max-width: 280px; margin: 0 auto; }
+  .intl-visual    { grid-template-columns: 1fr; }
+  .intl-card-wide { grid-column: 1; }
+}
+@media (max-width: 640px) {
+  .hero-left { padding: 4rem 1.5rem 2rem; }
+  .services-grid  { grid-template-columns: 1fr; }
+  .process-steps  { grid-template-columns: 1fr; }
+  .step::after    { display: none; }
+  .form-row       { grid-template-columns: 1fr; }
+  .hero-stats     { gap: 1.5rem; }
+  .hero-right     { height: 300px; }
+  .globe-container { width: 280px; height: 280px; }
+  .globe-core     { inset: 60px; }
+}
+</style>
+
+<!-- Formulaire Formspree avec gestion JS -->
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('form-status') as HTMLElement;
+  const submitBtn = form?.querySelector('.form-submit') as HTMLButtonElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '…';
+    status.hidden = true;
+    status.className = '';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        status.textContent = form.dataset.success || 'Message envoyé ! Nous vous répondrons sous 24h.';
+        status.className = 'success';
+        form.reset();
+      } else {
+        throw new Error('server');
+      }
+    } catch {
+      status.textContent = form.dataset.error || 'Une erreur est survenue. Veuillez réessayer ou nous appeler directement.';
+      status.className = 'error';
+    } finally {
+      status.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer ma demande';
+      status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+</script>

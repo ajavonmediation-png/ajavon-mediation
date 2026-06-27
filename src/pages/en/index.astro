@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations, getLocalePath } from '../../i18n/index';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="AJAVON Mediation — International Family Mediation | France"
+  description="Firm specialising in national and international family mediation. Parental abduction, visitation rights, cross-border divorce. Free first consultation."
+  lang={lang}
+>
+  <!-- Même structure que index.astro, traduite automatiquement via t -->
+  <p style="padding: 120px 6rem 4rem; font-family: var(--font-serif); font-size: 1.2rem; color: var(--terra);">
+    English version — content loading via i18n. <a href="/" style="color: var(--gold);">← Retour / Back</a>
+  </p>
+</Layout>
