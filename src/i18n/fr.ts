@@ -33,7 +33,7 @@ export const fr = {
   // About
   about: {
     label: "À propos",
-    title1: "Une médiatrice",
+    title1: "Un médiateur",
     title2: "à votre écoute",
     text1: "Le cabinet AJAVON Médiation & Conseils est spécialisé dans la médiation familiale nationale et internationale. Nous intervenons dans les situations de conflits familiaux complexes, en particulier lorsque des frontières — géographiques, culturelles ou juridiques — rendent les accords difficiles.",
     text2: "Notre approche est fondée sur l'écoute, la neutralité et le respect de chaque partie. La médiation offre un espace sécurisé où les familles peuvent trouver des solutions durables, dans l'intérêt supérieur des enfants.",
@@ -43,7 +43,7 @@ export const fr = {
     value2_desc: "Tous les échanges restent strictement confidentiels, conformément au cadre légal.",
     value3_title: "Expertise internationale",
     value3_desc: "Maîtrise des conventions internationales et des systèmes juridiques étrangers.",
-    credential_title: "Médiatrice certifiée",
+    credential_title: "Médiateur certifié",
     credential_name: "Me Ajavon",
   },
 
@@ -113,7 +113,7 @@ export const fr = {
     kw2: "Intérêt de l'enfant",
     kw3: "Médiation",
     kw4: "Enlèvement parental",
-    desc1: "Cet ouvrage explore les contradictions inhérentes à la notion d'intérêt supérieur de l'enfant dans les litiges familiaux internationaux. À travers une analyse comparative des systèmes juridiques français, africains et anglo-saxons, l'auteure propose une vision renouvelée de la protection de l'enfant.",
+    desc1: "Cet ouvrage explore les contradictions inhérentes à la notion d'intérêt supérieur de l'enfant dans les litiges familiaux internationaux. À travers une analyse comparative des systèmes juridiques français, africains et anglo-saxons, l'auteur propose une vision renouvelée de la protection de l'enfant.",
     desc2: "Un outil indispensable pour les praticiens du droit, les travailleurs sociaux et toute personne confrontée à ces situations complexes.",
     format_paper: "Format papier",
     format_ebook: "Ebook",
